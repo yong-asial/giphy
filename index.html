@@ -16,6 +16,8 @@
         const API_KEY = 'zPoHroYTQUx26LVpbi3aPvPxSVBIENLz';
         const url = `https://api.giphy.com/v1/stickers/random?api_key=${API_KEY}&tag=&rating=G`;
         const defaultUrl = 'https://media3.giphy.com/media/fWBViglh1Eznukv4nh/giphy-hd.mp4?cid=3fa81a4ceabc454ebb00003cbf8943264385c0f05cddba5a&rid=giphy-hd.mp4';
+        const refreshInterval = 3000;
+
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -25,7 +27,12 @@
             .catch(err => {
                 console.log(err);
                 video.src = defaultUrl;
-            })
+            });
+
+        setInterval(() => {
+            location.reload(true);
+        }, refreshInterval);
+
     </script>
 </body>
 </html>
